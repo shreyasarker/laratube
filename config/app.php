@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        LaraTube\Providers\AppServiceProvider::class,
+        LaraTube\Providers\AuthServiceProvider::class,
+        // LaraTube\Providers\BroadcastServiceProvider::class,
+        LaraTube\Providers\EventServiceProvider::class,
+        LaraTube\Providers\RouteServiceProvider::class,
 
     ],
 

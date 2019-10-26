@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "LaraTube\\": "app/"
         },
         "classmap": [
             "database/seeds",

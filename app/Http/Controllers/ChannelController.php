@@ -4,9 +4,15 @@ namespace LaraTube\Http\Controllers;
 
 use Illuminate\Http\Request;
 use LaraTube\Channel;
+use LaraTube\Http\Requests\Channels\UpdateChannelRequest;
 
 class ChannelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth'])->only('update');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -67,7 +73,7 @@ class ChannelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Channel $channel)
+    public function update(UpdateChannelRequest $request, Channel $channel)
     {
         if($request->hasFile('image')){
 
@@ -76,6 +82,10 @@ class ChannelController extends Controller
             $channel->addMediaFromRequest('image')
             ->toMediaCollection('images');
         }
+        $channel->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
         return redirect()->back();
     }
 

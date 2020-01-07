@@ -32055,6 +32055,14 @@ Vue.component('subscribe-button', {
       }
     }
   },
+  computed: {
+    subscribed: function subscribed() {
+      if (!__auth()) return false;
+      return !!this.subscriptions.find(function (subscription) {
+        return subscription.user_id == __auth().id;
+      });
+    }
+  },
   methods: {
     toggleSubscription: function toggleSubscription() {
       if (!__auth()) {

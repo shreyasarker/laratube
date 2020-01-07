@@ -6,6 +6,12 @@ Vue.component('subscribe-button', {
             default: () => []
         }
     },
+    computed: {
+        subscribed(){
+            if(! __auth()) return false
+            return !!this.subscriptions.find(subscription => subscription.user_id == __auth().id)
+        }
+    },
     methods: {
         toggleSubscription(){
             if(! __auth()){
